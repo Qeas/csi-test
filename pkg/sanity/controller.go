@@ -389,7 +389,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 		})
 
 		It("should fail when no volume capabilities are provided", func() {
-			name := UniqueString("sanity-controller-create-no-volume-capabilities")
+			name := UniqueString("sanity-no-capabilities")
 			_, err := r.CreateVolume(
 				context.Background(),
 				&csi.CreateVolumeRequest{
@@ -409,7 +409,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 		It("should return appropriate values SingleNodeWriter NoCapacity", func() {
 
 			By("creating a volume")
-			name := UniqueString("sanity-controller-create-single-no-capacity")
+			name := UniqueString("sanity-no-capacity")
 
 			r.MustCreateVolume(
 				context.Background(),
@@ -430,7 +430,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 		It("should return appropriate values SingleNodeWriter WithCapacity 1Gi", func() {
 
 			By("creating a volume")
-			name := UniqueString("sanity-controller-create-single-with-capacity")
+			name := UniqueString("sanity-with-capacity")
 
 			vol, err := r.CreateVolume(
 				context.Background(),
@@ -501,7 +501,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 		It("should fail when requesting to create a volume with already existing name and different capacity", func() {
 
 			By("creating a volume")
-			name := UniqueString("sanity-controller-create-twice-different")
+			name := UniqueString("sanity-different")
 			size1 := TestVolumeSize(sc)
 
 			r.MustCreateVolume(
@@ -744,7 +744,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 
 			// Create Volume First
 			By("creating a single node writer volume")
-			name := UniqueString("sanity-controller-validate-nocaps")
+			name := UniqueString("nocaps")
 
 			vol := r.MustCreateVolume(
 				context.Background(),
@@ -1000,7 +1000,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 
 			// Create Volume First
 			By("creating a single node writer volume")
-			name := UniqueString("sanity-controller-published-incompatible")
+			name := UniqueString("sanity-incompatible")
 
 			vol := r.MustCreateVolume(
 				context.Background(),
@@ -1685,7 +1685,7 @@ func VolumeLifecycle(r *Resources, sc *TestContext, count int) {
 
 	// Create Volume First
 	By("creating a single node writer volume")
-	name := UniqueString(fmt.Sprintf("sanity-controller-publish-%d", count))
+	name := UniqueString(fmt.Sprintf("sanity-publish-%d", count))
 
 	vol := r.MustCreateVolume(
 		context.Background(),
