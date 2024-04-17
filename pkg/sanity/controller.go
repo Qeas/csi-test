@@ -694,7 +694,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 
 			// Create Volume First
 			By("creating a volume")
-			name := UniqueString("sanity-controller-create-appropriate")
+			name := UniqueString("appropriate")
 
 			vol := r.MustCreateVolume(
 				context.Background(),
